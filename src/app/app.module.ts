@@ -3,7 +3,8 @@ import { NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-import { RouterModule } from '@angular/router';
+import { RouterModule,Routes } from '@angular/router';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +19,17 @@ import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import { LoginComponent } from './login/login.component';
+
+const routes: Routes = [
+  { path: '', component:HomeComponent},
+  { path: 'products', component: ProductsComponent},
+  { path: 'shopping-cart', component: ShoppingCartComponent},
+  { path: 'check-out', component: CheckOutComponent},
+  { path: 'order-success', component: OrderSuccessComponent},
+  { path: 'login', component: LoginComponent},
+  { path: 'admin/products', component: AdminProductsComponent},
+  { path: 'admin/orders', component: AdminOrdersComponent},
+];
 
 @NgModule({
   declarations: [
@@ -39,16 +51,8 @@ import { LoginComponent } from './login/login.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    RouterModule.forRoot([
-      { path: '', component:HomeComponent},
-      { path: 'products', component: ProductsComponent},
-      { path: 'shopping-cart', component: ShoppingCartComponent},
-      { path: 'check-out', component: CheckOutComponent},
-      { path: 'order-success', component: OrderSuccessComponent},
-      { path: 'login', component: LoginComponent},
-      { path: 'admin/products', component: AdminProductsComponent},
-      { path: 'admin/orders', component: AdminOrdersComponent},
-    ])
+    NgbModule,
+    RouterModule.forRoot(routes)    
   ],
   providers: [],
   bootstrap: [AppComponent]
