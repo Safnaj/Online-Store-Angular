@@ -5,7 +5,7 @@ on:
       - master
 env:
   AZURE_WEBAPP_NAME: online-store-angular
-  AZURE_WEBAPP_PACKAGE_PATH: './dist/online-store-angular'
+  AZURE_WEBAPP_PACKAGE_PATH: './dist/Online-Store-Angular'
   NODE_VERSION: '10.x'
 
 jobs:
