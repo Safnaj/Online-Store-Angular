@@ -12,8 +12,6 @@ export class NavbarComponent {
     //aFauth.authState.subscribe(user => this.user = user);    
   }
 
-  //Removed OnInit 
-
   logout() {
     this.auth.logout();
   }
