@@ -22,6 +22,7 @@ import { LoginComponent } from './login/login.component';
 
 import { AuthService } from './auth.service';
 import { AuthGuard } from './auth-guard.service';
+import { UserService } from './user.service';
 
 const routes: Routes = [
   { path: '', component:HomeComponent},
@@ -62,7 +63,8 @@ const routes: Routes = [
   ],
   providers: [
     AuthService,
-    AuthGuard
+    AuthGuard,
+    UserService
   ],
   bootstrap: [AppComponent]
 })
