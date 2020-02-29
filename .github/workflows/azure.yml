@@ -25,7 +25,7 @@ jobs:
     - name: 'Deploy to Azure WebApp'
       uses: azure/webapps-deploy@v2
       with:
-        package: ./dist/Online-Store-Angular
+        package: './dist/Online-Store-Angular'
         app-name: Online-Store-Angular
         publish-profile: ${{ secrets.AZURE_CREDENTIALS }}
         
