@@ -3,10 +3,10 @@ on:
   push:
     branches:
       - master
-# env:
-#   AZURE_WEBAPP_NAME: Online-Store-Angular
-#   AZURE_WEBAPP_PACKAGE_PATH: './dist/Online-Store-Angular'
-#   NODE_VERSION: '10.x'
+env:
+  AZURE_WEBAPP_NAME: Online-Store-Angular
+  AZURE_WEBAPP_PACKAGE_PATH: 'dist/Online-Store-Angular'
+  NODE_VERSION: '10.x'
 
 jobs:
   build-and-deploy:
@@ -25,7 +25,6 @@ jobs:
     - name: 'Deploy to Azure WebApp'
       uses: azure/webapps-deploy@v2
       with:
-        package: './dist/Online-Store-Angular'
-        app-name: Online-Store-Angular
+        app-name: ${{ env.AZURE_WEBAPP_NAME }}
         publish-profile: ${{ secrets.AZURE_CREDENTIALS }}
-        
+        package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
