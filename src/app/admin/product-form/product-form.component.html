@@ -8,20 +8,29 @@
     </div>
     <div class="form-group">
         <label for="price">Price</label>
-        <input ngModel name="price" id="price" type="number" class="form-control">
+        <input #price="ngModel" ngModel name="price" id="price" type="number" class="form-control" required>
+        <div class="alert alert-danger" *ngIf="price.touched && price.invalid">
+            Price is Required
+        </div>
     </div>
     <div class="form-group">
         <label for="category">Category</label>
-        <select ngModel name="category" id="category" class="form-control">
+        <select #category="ngModel" ngModel name="category" id="category" class="form-control" required>
             <option value=""></option>
             <option *ngFor="let c of categories$ | async" [value]="c.key">
                 {{ c.payload.val().name }}
             </option>
         </select>
+        <div class="alert alert-danger" *ngIf="category.touched && category.invalid">
+            Category is required
+        </div>
     </div>
     <div class="form-group">
         <label for="imageUrl">Image</label>
-        <input ngModel name="imageUrl" id="imageUrl" type="text" class="form-control">
+        <input #imageUrl="ngModel" ngModel name="imageUrl" id="imageUrl" type="text" class="form-control" required>
+        <div class="alert alert-danger" *ngIf="imageUrl.touched && imageUrl.invalid">
+            Image URL is required
+        </div>
     </div>
     <button class="btn btn-primary">Save</button>
 </form>
