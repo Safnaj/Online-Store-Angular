@@ -13,13 +13,7 @@ import { take } from 'rxjs/operators';
 export class ProductFormComponent implements OnInit {
 
   categories$;
-  product = {
-    $key: '',
-    title: '',
-    price: null,
-    category: '',
-    imageUrl: ''
-  };
+  product = {};
 
   constructor(
     private router: Router,
