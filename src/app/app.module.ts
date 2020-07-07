@@ -20,6 +20,7 @@ import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import { LoginComponent } from './login/login.component';
+import { ProductFilterComponent } from './products/product-filter/product-filter.component';
 
 import { AuthService } from './auth.service';
 import { AuthGuard } from './auth-guard.service';
@@ -28,6 +29,8 @@ import { UserService } from './user.service';
 import { CategoryService } from './category.service';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
 import { ProductService } from './product.service';
+import { ProductCardComponent } from './product-card/product-card.component';
+
 
 const routes: Routes = [
   
@@ -78,7 +81,9 @@ const routes: Routes = [
     AdminProductsComponent,
     AdminOrdersComponent,
     LoginComponent,
-    ProductFormComponent
+    ProductFormComponent,
+    ProductFilterComponent,
+    ProductCardComponent
   ],
   imports: [
     BrowserModule,

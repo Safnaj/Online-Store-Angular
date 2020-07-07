@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../product.service';
-import { CategoryService } from '../category.service';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from '../models/product';
 
@@ -11,11 +10,10 @@ import { Product } from '../models/product';
 })
 export class ProductsComponent implements OnInit {
   products: Product[] = [];
-  filteredProducts: Product[] = [];
-  categories$;
+  filteredProducts: Product[] = [];  
   category: string;
 
-  constructor(route: ActivatedRoute, productService: ProductService, categoryService: CategoryService) {
+  constructor(route: ActivatedRoute, productService: ProductService) {
       productService.getAll().subscribe(products => {
         this.products = products;
 
@@ -26,9 +24,7 @@ export class ProductsComponent implements OnInit {
             this.products;
         });
         
-      });
-
-      this.categories$ = categoryService.getAll();       
+      });     
   }
 
   ngOnInit() {
