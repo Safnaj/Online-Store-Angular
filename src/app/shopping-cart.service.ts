@@ -36,12 +36,20 @@ export class ShoppingCartService {
   }
 
   async addToCart(product : Product){
+    this.updateItemQuantity(product, 1);
+  }
+
+  async removeFromCart(product : Product){
+    this.updateItemQuantity(product, -1);
+  }
+
+  private async updateItemQuantity(product: Product, change: number){
     let cartId = await this.getOrCreateCartId();
     let item$ = this.getItem(cartId,product.key);
     
     item$.snapshotChanges().pipe(take(1)).subscribe((item:any) =>  {
       if (item.key != null) {
-        item$.update( {quantity:( item.payload.val().quantity || 0) + 1}); 
+        item$.update( {quantity:( item.payload.val().quantity || 0) + change}); 
       }
       else{
          item$.set( {product:product, quantity:1}); 
