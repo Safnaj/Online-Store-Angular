@@ -11,7 +11,7 @@ export class ShoppingCart {
         // tslint:disable-next-line: forin
         for (const productId in itemsMap) {
             const item = itemsMap[productId];
-            this.items.push(new ShoppingCartItem({ ...item, key: productId })); // Objects that we get from firebase, so we map to shopping-cart-item object
+            this.items.push(new ShoppingCartItem(item.product, item.quantity)); // Objects that we get from firebase, so we map to shopping-cart-item object
         }
     }
     
@@ -21,6 +21,13 @@ export class ShoppingCart {
 
       const item = this.itemsMap[product.key];
       return item ? item.quantity : 0;
+    }
+
+    get totalPrice(){
+      let sum = 0;
+      for (let productId in this.items)
+        sum += this.items[productId].totalPrice;
+      return sum;
     }
     
     get totalItemsCount(){
