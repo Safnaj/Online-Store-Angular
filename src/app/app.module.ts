@@ -31,6 +31,7 @@ import { ProductFormComponent } from './admin/product-form/product-form.componen
 import { ProductService } from './product.service';
 import { ProductCardComponent } from './product-card/product-card.component';
 import { ShoppingCartService } from './shopping-cart.service';
+import { ProductQuantityComponent } from './product-quantity/product-quantity.component';
 
 
 const routes: Routes = [
@@ -84,7 +85,8 @@ const routes: Routes = [
     LoginComponent,
     ProductFormComponent,
     ProductFilterComponent,
-    ProductCardComponent
+    ProductCardComponent,
+    ProductQuantityComponent
   ],
   imports: [
     BrowserModule,
