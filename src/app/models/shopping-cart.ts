@@ -10,12 +10,13 @@ export class ShoppingCart {
 
         // tslint:disable-next-line: forin
         for (const productId in itemsMap) {
-            const item = itemsMap[productId];
-            this.items.push(new ShoppingCartItem(item.product, item.quantity)); // Objects that we get from firebase, so we map to shopping-cart-item object
+          let item = itemsMap[productId];          
+          this.items.push(new ShoppingCartItem({ ...item, key: productId })); // Objects that we get from firebase, so we map to shopping-cart-item object
         }
     }
     
     getQuantity(product: Product) {
+      //console.log("product :"+JSON.stringify(product));
       if (!this.itemsMap) // This is required here(was not added by Mosh) to prevent null ref error when the product card componenet
           return 0;       // checks the quantity of every item and renders the big 'Add to cart' button or the qty in the cart
 

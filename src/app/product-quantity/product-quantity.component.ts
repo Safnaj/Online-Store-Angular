@@ -14,6 +14,11 @@ export class ProductQuantityComponent {
 
   constructor(private cartService: ShoppingCartService) { }
 
+  ngOnInit(){
+    // console.log("Product :"+this.product);
+    // console.log("Cart :"+this.shoppingCart);
+  }
+
   addToCart(){
     this.cartService.addToCart(this.product);
   }

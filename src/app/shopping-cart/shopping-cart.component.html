@@ -4,31 +4,42 @@
 -->
 
 <h3>Shopping Cart</h3>
-<ng-container *ngIf="cart$ | async as cart">
+<div class="row col-10" *ngIf="cart$ | async as cart">
     <p>
         You have {{ cart.totalItemsCount }} items in your shipping cart.
     </p>
     <table class="table">
         <thead>
             <tr>
+                <th></th>
                 <th>Product</th>
-                <th>Quantity</th>
-                <th>Price</th>
+                <th class="text-center"style="width: 230px;">Quantity</th>
+                <th class="text-right" style="width: 200px;">Price</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let item of cart.items">
-                <td>{{ item.product.title }}</td>
-                <td>{{ item.quantity }}</td>
-                <td>{{ item.totalPrice | currency:'USD':true }}</td>
+                <!-- <td><img class="thumbnail" [src]="item.imageUrl" alt=""></td> -->
+                <td>
+                    <div [style.backgroundImage]="'url(' + item.imageUrl +')'" class="thumbnail"></div>
+                </td>
+                <td>{{ item.title }}</td>
+                <td>
+                    <product-quantity [product]="item" [shopping-cart]="cart"></product-quantity>
+                </td>
+                <td class="text-right">{{ item.totalPrice | currency:'USD':true }}</td>
             </tr>
         </tbody>
         <tfoot>
             <tr>
                 <th></th>
                 <th></th>
-                <th>{{ cart.totalPrice | currency:'USD':true }}</th>
+                <th></th>
+                <th class="text-right">{{ cart.totalPrice | currency:'USD':true }}</th>
             </tr>
         </tfoot>
     </table>
-</ng-container>
+    <button *ngIf="cart.items.length" type="button" (click)="clearCart()" class="btn btn-danger">
+        Clear Shopping Cart
+    </button>
+</div>
