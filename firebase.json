@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/sliitfoss",
+    "public": "dist/Online-Store-Angular",
     "ignore": [
       "firebase.json",
       "**/.*",
