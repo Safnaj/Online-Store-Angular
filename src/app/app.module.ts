@@ -1,3 +1,4 @@
+import { OrderService } from './order.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire';
@@ -105,7 +106,8 @@ const routes: Routes = [
     UserService,
     CategoryService,
     ProductService,
-    ShoppingCartService
+    ShoppingCartService,
+    OrderService
   ],
   bootstrap: [AppComponent]
 })
