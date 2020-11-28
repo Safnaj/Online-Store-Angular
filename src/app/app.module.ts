@@ -33,6 +33,8 @@ import { ProductService } from './product.service';
 import { ProductCardComponent } from './product-card/product-card.component';
 import { ShoppingCartService } from './shopping-cart.service';
 import { ProductQuantityComponent } from './product-quantity/product-quantity.component';
+import { ShoppingCartSummaryComponent } from './shopping-cart-summary/shopping-cart-summary.component';
+import { ShippingFormComponent } from './shipping-form/shipping-form.component';
 
 
 const routes: Routes = [
@@ -44,7 +46,7 @@ const routes: Routes = [
 
   { path: 'check-out', component: CheckOutComponent, canActivate: [AuthGuard] },
   { path: 'my/orders', component: MyOrdersComponent, canActivate: [AuthGuard] },
-  { path: 'order-success', component: OrderSuccessComponent, canActivate: [AuthGuard] },
+  { path: 'order-success/:id', component: OrderSuccessComponent, canActivate: [AuthGuard] },
   
   { 
     path: 'admin/products/new', 
@@ -87,7 +89,9 @@ const routes: Routes = [
     ProductFormComponent,
     ProductFilterComponent,
     ProductCardComponent,
-    ProductQuantityComponent
+    ProductQuantityComponent,
+    ShoppingCartSummaryComponent,
+    ShippingFormComponent
   ],
   imports: [
     BrowserModule,
