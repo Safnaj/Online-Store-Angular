@@ -1,4 +1,4 @@
-import { ShoppingCartService } from './../shopping-cart.service';
+import { ShoppingCartService } from '../services/shopping-cart.service';
 import { Component, OnInit } from '@angular/core';
 import { ShoppingCart } from '../models/shopping-cart';
 import { Observable } from 'rxjs';

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { OrderService } from 'src/app/order.service';
+import { OrderService } from 'src/app/services/order.service';
+
 
 @Component({
   selector: 'app-admin-orders',
