@@ -17,7 +17,6 @@ export class ProductsComponent implements OnInit {
   filteredProducts: Product[] = [];  
   category: string;
   cart$: Observable<ShoppingCart>;
-  subscription: Subscription;
 
   constructor(
     private route: ActivatedRoute, 

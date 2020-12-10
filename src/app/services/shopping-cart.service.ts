@@ -1,4 +1,3 @@
-import { title } from 'process';
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Product } from '../models/product';
@@ -14,25 +13,28 @@ import { ShoppingCartItem } from '../models/shopping-cart-item';
 })
 export class ShoppingCartService {
 
-  constructor(private db: AngularFireDatabase) { }
-
-  
-
-  // async getCart(): Promise<Observable<ShoppingCart>> {
-  //   const cartId = await this.getOrCreateCartId();
-
-  //   return this.db.object('/shopping-carts/' + cartId).snapshotChanges()
-  //     .pipe(map(x => new ShoppingCart(x.payload.exportVal().items)));
-  // }
+  constructor(private db: AngularFireDatabase) { }  
 
   async getCart(): Promise<Observable<ShoppingCart>> {
-    let cartId = await this.getOrCreateCartId();
-    return this.db
-        .object('/shopping-carts/' + cartId)
-        .valueChanges()
-        .pipe(map((x)=> (x) ? new ShoppingCart(( x as any).items): (x as any)
-    ));
+    const cartId = await this.getOrCreateCartId();
+    return this.db.object('/shopping-carts/' + cartId).snapshotChanges()
+      .pipe(map(x => new ShoppingCart(x.payload.exportVal().items)));
   }
+
+  // async getCart(): Promise<Observable<ShoppingCart>> {
+  //   let cartId = await this.getOrCreateCartId();
+  //   return this.db
+  //       .object('/shopping-carts/' + cartId)
+  //       .valueChanges()
+  //       .pipe(map((x)=> (x) ? new ShoppingCart(( x as any).items): (x as any)
+  //   ));
+  // }
+
+  // async getCart(): Promise<Observable<ShoppingCart>> {
+  //   let cartId = await this.getOrCreateCartId();
+  //   return this.db.object('/shopping-carts/' + cartId).snapshotChanges()
+  //     .pipe(map((x: any) => new ShoppingCart(x.items)));
+  // }
 
   async addToCart(product : Product){
     this.updateItem(product, 1);
@@ -70,7 +72,7 @@ export class ShoppingCartService {
   private async updateItem(product: Product, change: number) {
     const cartId = await this.getOrCreateCartId();
     const item = this.getItem(cartId, product.key);
-    console.log(JSON.stringify(product));
+    //console.log(JSON.stringify(product));
 
     item
       .valueChanges()
